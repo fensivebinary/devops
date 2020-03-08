@@ -1,14 +1,16 @@
 #!/bin/bash -xe
 echo "---Reading name and versions"
 version=$(cat version_control)
-final_name="first_app_$version${BUILD_NUMBER}"
+base_name=first_app
+final_name="${base_name}_$version${BUILD_NUMBER}"
+echo $final_name
 echo "---Creating directories"
-mkdir -p $final_name/opt/first_app/bin $final_name/DEBIAN
+mkdir -p $final_name/opt/${base_name}/bin $final_name/DEBIAN
 chmod -R 0775 $final_name
 echo "---Building"
-python3 -m PyInstaller -F -n first_app --log-level INFO  hello.py &&
+python3 -m PyInstaller -F -n ${base_name} --log-level INFO  hello.py &&
 echo "---Copying files"
-cp $(pwd)/dist/first_app $(pwd)/$final_name/opt/first_app/bin/
+cp $(pwd)/dist/${base_name} $(pwd)/$final_name/opt/${base_name}/bin/
 
 echo "---Creating Control for Packaging"
 echo -e "Package: helloworld\n\
@@ -85,6 +87,7 @@ dpkg-deb --build $final_name
 echo "---Packge Created, Removing files now"
 
 echo "---Done, Uploading the artifacts now"
+
 
 curl -i -X PUT -u admin:admin123 \
 -T ./${final_name}.deb \
