@@ -1,0 +1,14 @@
+Template: hello/username
+Type: string
+Description: Username:
+ Enter your linux username, please be careful when entering username, if username wont exists, system will create a new username.
+
+Template: hello/usernameagain
+Type: string
+Description: Username:
+ Username you entered does not exist, please enter correct existing username again.
+
+Template: hello/age
+Type: string
+Description: Age:
+ Enter your age.
