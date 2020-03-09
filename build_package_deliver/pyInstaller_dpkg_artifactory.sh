@@ -1,7 +1,7 @@
 #!/bin/bash -xe
 echo "---Reading name and versions"
 version=$(cat version_control)
-base_name=first_app
+base_name=hello
 final_name="${base_name}_$version${BUILD_NUMBER}"
 echo $final_name
 echo "---Creating directories"
