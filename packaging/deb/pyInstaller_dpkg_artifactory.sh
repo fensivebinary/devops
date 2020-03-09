@@ -91,4 +91,4 @@ echo "---Done, Uploading the artifacts now"
 
 curl -i -X PUT -u admin:admin123 \
 -T ./${final_name}.deb \
-http://IP/repository/Test_Artifacts/${final_name}.deb
+http://IP:Port/repository/Test_Artifacts/${final_name}.deb
