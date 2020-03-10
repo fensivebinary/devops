@@ -12,4 +12,5 @@ here is the complete list of content:
 - deals with building with PyInstaller, Packaging with dpkg-deb and delivering to artifactory with curl
 
 ##### Deploy
+- nginx: deals with deploying nginx on CentOS
 - squid: deals with deploying squid
