@@ -11,3 +11,5 @@ age="$RET"
 echo "the username you entered was: $username and your age was $age"
 
 db_stop
+
+chown $(whoami):$(whoami) /opt/hello.py

@@ -1,7 +1,7 @@
 # devops
 DevOps Tools and Scritps
 
-to build:
+to package:
 ~~~
 dpkg-deb --build hello
 ~~~
