@@ -8,9 +8,9 @@ here is the complete list of content:
 ##### Packaging
 - deb: deals with packaging in deb with dpkg
 
-#### build_package_deliver
+##### build_package_deliver
 - deals with building with PyInstaller, Packaging with dpkg-deb and delivering to artifactory with curl
 
 ##### Deploy
 - nginx: deals with deploying nginx on CentOS
-- squid: deals with deploying squid
+- squid: deals with deploying squid on CentOS
