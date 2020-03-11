@@ -1,4 +1,4 @@
-#!/bin/bash -xe
+#!/bin/bash -e
 
 echo "Installing Updates\n"
 yum -y install epel-release
@@ -15,4 +15,4 @@ ip addr show eth0 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'
 echo
 echo "with port 80\n"
 
-echo "If you are running this from a VM then you need to configure iptables to access nginx from outside\n"
+echo "You might need to configure iptables to access nginx from outside your network\n"

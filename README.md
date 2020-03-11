@@ -13,4 +13,4 @@ here is the complete list of content:
 
 ##### Deploy
 - nginx: deals with deploying nginx on CentOS
-- squid: deals with deploying squid on CentOS
+- squid: deals with deploying squid proxy with and without auth on CentOS

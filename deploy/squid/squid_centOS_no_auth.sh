@@ -1,4 +1,4 @@
-#!/bin/bash -xe
+#!/bin/bash -e
 
 echo "---Installing Updates\n"
 yum -y install epel-release
