@@ -27,3 +27,8 @@ to unisntall:
 sudo apt-get remove hello -y
 sudo apt-get purge hello -y
 ~~~
+
+to install in non-interactive mode:
+~~~
+sudo DEBIAN_FRONTEND=noninteractive apt-get install ./hello.deb
+~~~
