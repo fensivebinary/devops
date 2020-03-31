@@ -1,0 +1,24 @@
+---
+#ansible-playbook
+
+- name: Create, Copy and Install custom package on Ubuntu
+  hosts: ubuntu
+  tasks:
+          - name: create a directory on Ubuntu
+            file:
+                    path: /home/thedude/custom_package
+                    state: directory
+          - name: copy my custom package to ubuntu
+            copy:
+                    src: /mnt/d/Non_Office_Content/Git/devops/installation/hello.deb
+                    dest: /home/thedude/custom_package/hello.deb
+            when: ansible_facts['distribution'] == 'Ubuntu'
+          - name: disable interaction
+            shell: "export DEBIAN_FRONTEND=noninteractive"
+            when: ansible_facts['distribution'] == 'Ubuntu'
+          - name: install custom package with apt
+            apt:
+                    deb: /home/thedude/custom_package/hello.deb
+                    state: present
+            when: ansible_facts['distribution'] == 'Ubuntu'
+            become: true

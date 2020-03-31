@@ -1,9 +1,0 @@
-Package: hello
-Version: 2.2.7
-Section: base
-Priority: optional
-Architecture: all
-Depends: debconf (>= 0.2.26)
-Maintainer: Muhammad Junaid Raza <strawberriesfrozen@gmail.com>
-Description: Hello World!
- Say hello to the user.

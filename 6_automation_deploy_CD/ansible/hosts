@@ -1,0 +1,6 @@
+[centos]
+centos_6 ansible_host=192.168.43.228 ansible_ssh_user=centos ansible_ssh_pass=pass ansible_sudo_pass=pass
+
+[ubuntu]
+ubuntu_18 ansible_host=192.168.43.79 ansible_ssh_user=thedude ansible_ssh_pass=pass ansible_sudo_pass=pass
+

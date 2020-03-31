@@ -1,0 +1,22 @@
+---
+#ansible-playbook
+
+- name: run task on host
+  hosts: "*"
+  tasks:
+          - name: install htop with yum
+            yum:
+                    name: htop
+                    state: present
+                    update_cache: true
+            become: true
+            when: ansible_facts['distribution'] == 'CentOS'
+
+          - name: install htop with apt-get
+            apt:
+                    name: htop
+                    state: present
+                    update_cache: true
+            become: true
+            when: ansible_facts['distribution'] == 'Ubuntu'
+

@@ -1,0 +1,30 @@
+---
+#ansible-playbook
+
+- name: Create, Copy, install on centos
+  hosts: centos
+  tasks:
+          - name: install libselinux-python for copy to centos
+            yum:
+                    name: libselinux-python
+                    state: present
+                    update_cache: true
+            become: true
+            when: ansible_facts['distribution'] == 'CentOS'
+          - name: create a directory on all hosts
+            file:
+                    path: $HOME/custom_package
+                    state: directory
+            when: ansible_facts['distribution'] == 'CentOS'
+          - name: copy my a file to centos home directory
+            copy:
+                    src: /mnt/d/Non_Office_Content/Git/devops/installation/hello.deb
+                    dest: $HOME/custom_package/hello.deb
+            when: ansible_facts['distribution'] == 'CentOS'
+          - name: install dpkg with yum
+            yum:
+                    name: dpkg
+                    state: present
+                    update_cache: true
+            become: true
+            when: ansible_facts['distribution'] == 'CentOS'

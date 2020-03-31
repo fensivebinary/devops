@@ -1,0 +1,17 @@
+#!/bin/sh
+set -e
+
+# Source debconf library.
+. /usr/share/debconf/confmodule
+
+# db_get honey/username
+# if getent passwd $RET > /dev/null 2>&1; then
+#     # Poor misguided one..
+#     echo "user exists"
+# else
+#     echo "user does not exists, setting to default root"
+#     db_set honey/username "root"
+#     db_go
+# fi
+
+db_stop

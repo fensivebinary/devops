@@ -1,0 +1,15 @@
+#!/bin/sh
+set -e
+
+# Source debconf library.
+. /usr/share/debconf/confmodule
+
+db_get hello/username
+username="$RET"
+db_get hello/age
+age="$RET"
+echo "the username you entered was: $username and your age was $age"
+
+db_stop
+
+# chown $(whoami):$(whoami) /opt/hello.py
