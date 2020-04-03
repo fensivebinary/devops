@@ -17,4 +17,4 @@ here is the complete list of content:
 - deals with building with PyInstaller, Packaging with dpkg-deb and delivering to artifactory with curl
 
 ##### automation_deploy_CD
-- ansible: has lots of ansible playbooks for automation of installation and configurations
+- ansible: has lots of ansible playbooks and roles for automation of installation and configurations
