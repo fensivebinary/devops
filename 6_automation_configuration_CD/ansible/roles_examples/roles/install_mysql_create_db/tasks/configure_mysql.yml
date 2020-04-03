@@ -1,0 +1,35 @@
+---
+#configuring mysql
+
+# disabling the bind-address in conf
+- name: disable bind-address
+  shell: "sudo sed -i 's/bind-address/#bind-address/g' /etc/mysql/mysql.conf.d/mysqld.cnf"
+  become: true
+
+# creating the database
+- name: Check that the /root/.my.cnf exists
+  stat:
+          path: /root/.my.cnf
+  register: stat_result
+  become: true
+
+- name: /root/.my.cnf exists
+  shell: "{{ item }}"
+  with_items:
+          - mysql -e "CREATE DATABASE {{ DBNAME }} /*\!40100 DEFAULT CHARACTER SET utf8 */;"
+          - mysql -e "CREATE USER '{{ MYSQL_USER }}'@'%' IDENTIFIED BY '{{ MYSQL_USER_PASSWORD }}';"
+          - mysql -e "GRANT ALL PRIVILEGES ON *.* TO '{{ MYSQL_USER }}'@'%' WITH GRANT OPTION;"
+          - mysql -e "FLUSH PRIVILEGES;"
+  when: stat_result.stat.exists == True
+  become: true
+
+- name: /root/.my.cnf does not exist
+  shell: "{{ item }}"
+  with_items:
+          - mysql -u root -p{{ rootpasswd }} -e "CREATE DATABASE {{ DBNAME }} /*\!40100 DEFAULT CHARACTER SET utf8 */;"
+          - mysql -u root -p{{ rootpasswd }} -e "CREATE USER '{{ MYSQL_USER }}'@'%' IDENTIFIED BY '{{ MYSQL_USER_PASSWORD }}';"
+          - mysql -u root -p{{ rootpasswd }} -e "GRANT ALL PRIVILEGES ON *.* TO '{{ MYSQL_USER }}'@'%' WITH GRANT OPTION;"
+          - mysql -u root -p{{ rootpasswd }} -e "FLUSH PRIVILEGES;"
+  when: stat_result.stat.exists == False
+  become: true
+

@@ -1,0 +1,30 @@
+---
+#install mysql
+
+- name: Remove apt lock file
+  file:
+    state: absent
+    path: "/var/lib/dpkg/lock"
+  become: true
+
+- name: Remove apt lock file
+  file:
+    state: absent
+    path: "/var/lib/dpkg/lock-frontend"
+  become: true
+  
+- name: Update APT Cache
+  apt:
+    update_cache: yes
+    force_apt_get: yes
+  become: true
+
+- name: install mysql-server with apt
+  apt:
+          name: mysql-server
+          state: present
+          update_cache: yes
+  become: true
+  when: ansible_facts['distribution'] == 'Ubuntu'
+
+

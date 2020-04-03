@@ -1,0 +1,10 @@
+---
+#restart and enable mysql service
+
+- name: restart and enable mysql service
+  service:
+    name: mysql
+    state: restarted
+    enabled: yes
+  become: true
+

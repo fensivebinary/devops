@@ -1,0 +1,7 @@
+---
+# tasks file for installing and configuring mysql
+
+- include: install_mysql.yml
+- include: configure_mysql.yml
+- include: service_mysql.yml
+

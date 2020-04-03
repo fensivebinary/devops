@@ -1,0 +1,21 @@
+---
+#run the roles
+
+- hosts: ubuntu_18
+  vars_prompt:
+        - name: MYSQL_USER
+          prompt: "Choose MySQL Username for Web Portal access: "
+          private: no
+        
+        - name: MYSQL_USER_PASSWORD
+          prompt: "Choose MySQL Password for Web Portal (asked only once, make sure its correct): "
+          private: no
+        
+        - name: rootpasswd
+          prompt: "Enter MySQL Root Password (asked once, used to create MySQL User for Web Portal): "
+          private: no
+  vars:
+          DBNAME: sdp
+
+  roles:
+    - install_mysql_create_db

@@ -1,0 +1,5 @@
+---
+- hosts: localhost
+  remote_user: root
+  roles:
+    - /mnt/c/Users/junaid.raza/Desktop/Ansible/roles/ubuntu
